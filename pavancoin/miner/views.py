@@ -10,7 +10,7 @@ def mine(request):
     if(len(blockchain.text)==0):
         save_blockchain([create_genesis_block()])
 
-    transaction=pickle.load('C:/Users/hp/Desktop/voidcoin/unverified_transactions.dat')
+    transaction=pickle.load('./pavancoin/unverified_transactions.dat')
 
     validate_signature(transaction['front'],transaction['signature'],transaction['message'])
 
@@ -37,7 +37,7 @@ def mine(request):
     # Now create the new block
     mined_block = Block(new_block_index, new_block_timestamp, new_block_data, last_block_hash)
     blockchain.append(mined_block)
-    with open("C:/Users/hp/Desktop/voidcoin/blockchain.dat",'wb') as df:
+    with open("./pavancoin/blockchain.dat",'wb') as df:
         df.write(blockchain)
     df.close()
 
